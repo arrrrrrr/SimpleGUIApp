@@ -49,7 +49,7 @@ BOOL D2DWindow::Create(
 
     if (SUCCEEDED(hr)) {
         if (BaseWindow::Create(className, lpWindowName, dwStyle, dwExStyle,
-            CW_USEDEFAULT, CW_USEDEFAULT, 800, 600, hWndParent, hMenu,
+            CW_USEDEFAULT, CW_USEDEFAULT, 1280, 768, hWndParent, hMenu,
             menu, cursor, icon, iconSmall)) {
 
             // Correct the window size if the DPI differs from 96
@@ -366,28 +366,42 @@ void D2DWindow::DrawText() {
     RECT rc;
     GetClientRect(m_hwnd, &rc);
 
+    int curr_y = rc.top;
+
     RECT rcHeading;
     {
-        int width = rc.right - rc.left;
-        rcHeading.left = rc.left + (LONG)(width / 10);
-        rcHeading.right = rc.right - (LONG)(width / 10);
+        int top_margin = 20, bot_margin = 20, bbox_height = 80;
+        curr_y += top_margin;
 
-        int spacing = 20;
-        int height = rc.bottom - rc.top - spacing;
-        rcHeading.top = rc.top + spacing;
-        rcHeading.bottom = rcHeading.top + 80;
+        int bbox_width = rc.right - rc.left;
+        int height_left = rc.bottom - curr_y;
+
+        rcHeading.left = rc.left;
+        rcHeading.right = rc.right;
+
+        rcHeading.top = curr_y;
+        curr_y += bbox_height;
+        
+        rcHeading.bottom = curr_y;
+        curr_y += bot_margin;
     }
 
     RECT rcBody;
     {
-        int width = rc.right - rc.left;
-        rcBody.left = rc.left + (LONG)(width / 10);
-        rcBody.right = rc.right - (LONG)(width / 10);
+        int top_margin = 20, bot_margin = 20, bbox_height = 120;
+        curr_y += top_margin;
 
-        int spacing = 40;
-        int height = rc.bottom - rcHeading.bottom - spacing;
-        rcBody.top = rcHeading.bottom + spacing;
-        rcBody.bottom = rcBody.top + 120;
+        int bbox_width = rc.right - rc.left;
+        int height_left = rc.bottom - curr_y;
+
+        rcBody.left = rc.left;
+        rcBody.right = rc.right;
+
+        rcBody.top = curr_y;
+        curr_y += bbox_height;
+
+        rcBody.bottom = curr_y;
+        curr_y += bot_margin;
     }
 
     D2D1_RECT_F layoutRectHeading = D2D1::RectF(
