@@ -15,9 +15,13 @@ D2DWindow::D2DWindow() :
 D2DWindow::~D2DWindow()
 {
     SafeRelease(&m_pDirect2dFactory);
+    SafeRelease(&m_pDWriteFactory);
     SafeRelease(&m_pRenderTarget);
     SafeRelease(&m_pLightSlateGrayBrush);
     SafeRelease(&m_pCornflowerBlueBrush);
+    SafeRelease(&m_pPurpleBrush);
+    SafeRelease(&m_pTextHeadingFormat);
+    SafeRelease(&m_pTextBodyFormat);
 }
 
 BOOL D2DWindow::Create(
