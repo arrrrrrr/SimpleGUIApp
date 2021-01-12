@@ -11,7 +11,6 @@ inline void SafeRelease(
     if (*ppInterfaceToRelease != NULL)
     {
         (*ppInterfaceToRelease)->Release();
-
         (*ppInterfaceToRelease) = NULL;
     }
 }

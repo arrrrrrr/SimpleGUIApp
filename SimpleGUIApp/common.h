@@ -14,4 +14,11 @@
 #include <dwrite.h>
 #include <wincodec.h>
 
+// Standard libraries
+#include <vector>
+#include <string>
+#include <memory>
+#include <functional>
+#include <exception>
+
 #include "utils.h"

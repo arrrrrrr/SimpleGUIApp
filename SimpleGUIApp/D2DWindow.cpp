@@ -128,7 +128,7 @@ LRESULT D2DWindow::HandleMessage(UINT uMsg, WPARAM wParam, LPARAM lParam)
                     case IDM_ABOUT:
                         DialogBox(m_hinst, MAKEINTRESOURCE(IDD_ABOUTBOX), m_hwnd, About);
                         break;
-                    case IDM_EXIT:
+                    case IDM_FILE_EXIT:
                         DestroyWindow(m_hwnd);
                         break;
                     default:

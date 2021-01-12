@@ -1,5 +1,6 @@
 #pragma once
 #include "BaseWindow.h"
+//#include "TextLayout.h"
 
 class D2DWindow :
     public BaseWindow<D2DWindow>
@@ -27,6 +28,8 @@ private:
     HRESULT LayoutText();
 
     void DrawText();
+
+    // void RegisterLayoutCallbacks(std::weak_ptr<BaseLayout> layout, std::function<HRESULT(BaseLayout, void*)> f_create, std::function<void(BaseLayout)> f_release);
 
 public:
     D2DWindow();

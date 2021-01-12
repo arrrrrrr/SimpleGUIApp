@@ -98,12 +98,13 @@ public:
         return m_className;
     }
 
+
 protected:
 
     virtual void Initialize(int nCmdShow) = 0;
     virtual LRESULT HandleMessage(UINT uMsg, WPARAM wParam, LPARAM lParam) = 0;
     virtual int RunMessageLoop() = 0;
-
+    
     HWND m_hwnd = nullptr;
     HINSTANCE m_hinst = nullptr;
     wchar_t m_className[256] = { 0 };
